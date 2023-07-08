@@ -1,9 +1,8 @@
 import "./code-cell.css"
+import { useEffect } from "react"
 import CodeEditor from "./code-editor"
 import Preview from "./preview"
-import bundle from "../bundler"
 import Resizable from "./resizable"
-import React, { useEffect, useState } from "react"
 import { Cell } from "../state"
 import { useActions } from "../hooks/use-actions"
 import { useTypedSelector } from "../hooks/use-typed-selector"
@@ -17,11 +16,13 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const { updateCell, createBundle } = useActions()
   const bundle = useTypedSelector((state) => state.bundles[cell.id])
   const cumulativeCode = useCumulativeCode(cell.id)
+
   useEffect(() => {
     if (!bundle) {
       createBundle(cell.id, cumulativeCode)
       return
     }
+
     const timer = setTimeout(async () => {
       createBundle(cell.id, cumulativeCode)
     }, 750)
@@ -29,6 +30,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     return () => {
       clearTimeout(timer)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cumulativeCode, cell.id, createBundle])
 
   return (
