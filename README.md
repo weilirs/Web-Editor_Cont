@@ -16,4 +16,12 @@ This repository is a continuation of [Web-Editor](https://github.com/weilirs/Web
 
 This project is built using TypeScript and React, with Redux used for state management.
 
+## Running the Server
+
+To run the server for development:
+
+```
+npm start
+```
+
 ## Demo(pending)
