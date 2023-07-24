@@ -25,3 +25,6 @@ npm start
 ```
 
 ## Demo(pending)
+
+https://github.com/weilirs/Web-Editor_cont/assets/62249815/17db43bd-7288-4708-8e77-1f4858865c17
+
